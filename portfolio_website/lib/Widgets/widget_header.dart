@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Models/model_header.dart';
 import 'package:portfolio_website/utils/constants.dart';
 import 'package:portfolio_website/utils/globals.dart';
-import 'package:portfolio_website/utils/screen_helper.dart';
+import 'package:portfolio_website/utils/screen_config.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 List<HeaderItem> headerItems = [
@@ -91,7 +91,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ScreenHelper(
+      child: ScreenConfig(
           desktop: Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: BuildHeader(),

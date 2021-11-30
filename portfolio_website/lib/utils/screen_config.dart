@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenHelper extends StatelessWidget {
+//This queries the screen size and returns what type of screen is viewing the page
+
+class ScreenConfig extends StatelessWidget {
   final Widget? mobile;
   final Widget? tablet;
   final Widget? desktop;
 
-  ScreenHelper({Key, key, this.desktop, this.mobile, this.tablet})
+  ScreenConfig({Key, key, this.desktop, this.mobile, this.tablet})
       : super(key: key);
 
   static bool isMobile(BuildContext context) =>

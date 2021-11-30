@@ -13,14 +13,19 @@ class _State extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: Globals.scaffoldKey,
+        key: Globals
+            .scaffoldKey, //This key allows for other widgets to access this state
         endDrawer: Drawer(
+            // we create a drawer but no button is made to open it as this is set only on the mobile screen which is built elsewhere
             child: SafeArea(
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              //Inside the Drawer
+              //Either shows the call to action button or the navigation options
               child: ListView.separated(
                   itemBuilder: (BuildContext context, int index) {
                     return headerItems[index].isButton
+                        //call to action button
                         ? MouseRegion(
                             cursor: SystemMouseCursors.click,
                             child: Container(
@@ -41,6 +46,7 @@ class _State extends State {
                               ),
                             ),
                           )
+                        //navigation options
                         : ListTile(
                             title: Text(
                               headerItems[index].title,
@@ -48,9 +54,10 @@ class _State extends State {
                             ),
                           );
                   },
+                  //Controls how close drawer items are to one another
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(
-                      height: 10,
+                      height: 15,
                     );
                   },
                   itemCount: headerItems.length)),
@@ -60,6 +67,7 @@ class _State extends State {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
+                //if you wanted sticky header then just move outside of single child scroll view
                 child: Header(),
               )
             ]),
