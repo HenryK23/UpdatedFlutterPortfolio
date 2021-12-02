@@ -24,9 +24,15 @@ class HeaderLogo extends StatelessWidget {
           child: RichText(
             text: TextSpan(children: [
               TextSpan(
-                  text: "HK.",
+                  text: "HK",
                   style: GoogleFonts.poppins(
                       color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: ".",
+                  style: GoogleFonts.poppins(
+                      color: kDangerColor,
                       fontSize: 32,
                       fontWeight: FontWeight.bold))
             ]),
@@ -46,40 +52,36 @@ class HeaderRow extends StatelessWidget {
         child: Row(
             children: headerItems
                 .map((item) => item.isButton
-                    ? MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: kDangerColor,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                          child: TextButton(
-                              onPressed: item.onTap,
+                    ? Container(
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color: kDangerColor,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: TextButton(
+                            onPressed: item.onTap,
+                            child: Center(
+                              widthFactor: 1.5,
                               child: Text(
                                 item.title,
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: kBackgroundColor,
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
                                 ),
-                              )),
-                        ),
+                              ),
+                            )),
                       )
-                    : MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: Container(
-                          margin: EdgeInsets.only(right: 30),
-                          child: GestureDetector(
-                            onTap: item.onTap,
-                            child: Text(
-                              item.title,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                    : Container(
+                        margin: EdgeInsets.only(right: 30),
+                        child: GestureDetector(
+                          onTap: item.onTap,
+                          child: Text(
+                            item.title,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ))

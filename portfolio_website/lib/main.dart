@@ -17,10 +17,11 @@ class PortfolioWebsite extends StatelessWidget {
       title: 'Portfolio',
       themeMode: ThemeMode.dark,
       darkTheme: Theme.of(context).copyWith(
-          scaffoldBackgroundColor: kBackgroundColor,
+          scaffoldBackgroundColor: kBackgroundColor2,
           primaryColor: kPrimaryColor,
-          canvasColor: kBackgroundColor,
+          canvasColor: kBackgroundColor2,
           textTheme: GoogleFonts.latoTextTheme()),
+      //responsive wrapper is used for determining what size of screen
       builder: (context, widget) => ResponsiveWrapper.builder(
           ClampingScrollWrapper.builder(context, widget!),
           defaultScale: true,

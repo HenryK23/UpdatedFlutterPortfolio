@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+//Set up header items
+
 class HeaderItem {
   final String title;
   final VoidCallback onTap;
