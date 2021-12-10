@@ -81,7 +81,7 @@ class EducationSection extends StatelessWidget {
                                   Text(
                                     education.degree,
                                     style: GoogleFonts.poppins(
-                                        color: kDangerColor,
+                                        color: Theme.of(context).accentColor,
                                         fontWeight: FontWeight.w700,
                                         fontSize: 20),
                                   ),

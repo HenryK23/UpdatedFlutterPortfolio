@@ -67,7 +67,7 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                           Text(
                             "Featured Unreal Projects",
                             style: GoogleFonts.poppins(
-                                color: kDangerColor2,
+                                color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                           ),
@@ -87,7 +87,7 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                           Text(
                             projectItems[index!].subtitle,
                             style: TextStyle(
-                                color: kCaptionColor,
+                                color: Theme.of(context).secondaryHeaderColor,
                                 height: 1.5,
                                 fontSize: 15),
                           ),
@@ -100,7 +100,7 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                                 cursor: SystemMouseCursors.click,
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: kDangerColor,
+                                      color: Theme.of(context).accentColor,
                                       borderRadius: BorderRadius.circular(8)),
                                   height: 48,
                                   child: TextButton(
@@ -118,7 +118,7 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                                         child: Text(
                                           "NEXT PROJECT",
                                           style: TextStyle(
-                                              color: kBackgroundColor,
+                                              color: kBackgroundColor2,
                                               fontSize: 13,
                                               fontWeight: FontWeight.bold),
                                         )),

@@ -7,9 +7,9 @@ import 'package:portfolio_website/utils/screen_config.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 List<HeaderItem> headerItems = [
-  HeaderItem(title: 'ABOUT ME', onTap: () {}),
   HeaderItem(title: 'SKILLS', onTap: () {}),
   HeaderItem(title: 'PORTFOLIO', onTap: () {}),
+  HeaderItem(title: 'ABOUT ME', onTap: () {}),
   HeaderItem(title: 'CONTACT ME', onTap: () {}, isButton: true)
 ];
 
@@ -32,7 +32,7 @@ class HeaderLogo extends StatelessWidget {
               TextSpan(
                   text: ".",
                   style: GoogleFonts.poppins(
-                      color: kDangerColor,
+                      color: Theme.of(context).accentColor,
                       fontSize: 32,
                       fontWeight: FontWeight.bold))
             ]),
@@ -55,7 +55,7 @@ class HeaderRow extends StatelessWidget {
                     ? Container(
                         height: 35,
                         decoration: BoxDecoration(
-                          color: kDangerColor,
+                          color: Theme.of(context).accentColor,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: TextButton(

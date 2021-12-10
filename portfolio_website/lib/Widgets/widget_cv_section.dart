@@ -8,28 +8,28 @@ import 'package:responsive_framework/responsive_framework.dart';
 final List<DesignProcess> designProcess = [
   DesignProcess(
       title: "APP DEV",
-      imagePath: "images/Mobile.png",
-      subtitle: "Android Studio, Java, XML, Flutter, Firebase, Dart"),
+      iconpath: Icons.mobile_friendly,
+      subtitle: "- Android Studio\n- Java\n- Flutter\n- Firebase\n- Dart"),
   DesignProcess(
       title: "WEB DEV",
-      imagePath: "images/SSAS.png",
-      subtitle: "HTML, CSS, SCSS, Javascript, Flask, jinja2"),
+      iconpath: Icons.web,
+      subtitle: "- HTML\n- CSS\n- Javascript\n- Flask\n- jinja2"),
   DesignProcess(
       title: "UX",
-      imagePath: "images/UXdesign.png",
-      subtitle: "Figma, Axure, Photoshop"),
+      iconpath: Icons.web_stories,
+      subtitle: "- Figma\n- Axure RP\n- Photoshop"),
   DesignProcess(
       title: "GAMES DEV",
-      imagePath: "images/Gamepad.png",
-      subtitle: "Unity, Unreal Engine 4, C#, Python"),
+      iconpath: Icons.gamepad,
+      subtitle: "- Unity\n- Unreal Engine 4\n- C#\n- Python"),
   DesignProcess(
       title: "DATA",
-      imagePath: "images/storage.png",
-      subtitle: "SQL, MongoDB, Databases, R"),
+      iconpath: Icons.storage,
+      subtitle: "- SQL\n- MongoDB\n- Databases\n- R"),
   DesignProcess(
       title: "OFFICE",
-      imagePath: "images/Microsoft.png",
-      subtitle: "Word, Excel, Powerpoint"),
+      iconpath: Icons.window_outlined,
+      subtitle: "- Word\n- Excel\n- Powerpoint"),
 ];
 
 class CvSection extends StatelessWidget {
@@ -39,7 +39,7 @@ class CvSection extends StatelessWidget {
       width: double.infinity,
       child: ScreenConfig(
           desktop: _buildUi(context, 1000),
-          tablet: _buildUi(context, 760),
+          tablet: _buildUi(context, 720),
           mobile: _buildUi(context, MediaQuery.of(context).size.width * 0.8)),
     );
   }
@@ -51,36 +51,57 @@ class CvSection extends StatelessWidget {
       defaultScale: false,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "GOOD DESIGNS, \nBETTER EXPERIENCES",
-                style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    height: 1.8,
-                    fontSize: 22),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
+          Container(
+            child: Column(
+              children: [
+                Container(
                   child: Text(
-                    "DOWNLOAD CV",
+                    "SKILLS",
                     style: GoogleFonts.poppins(
-                        color: kDangerColor,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 16,
-                        height: 1.8),
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
                   ),
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                Wrap(children: [
+                  Container(
+                      constraints: BoxConstraints(maxWidth: 100),
+                      child: Text(
+                        "An Ever Growing List of Technical Skills",
+                        style: TextStyle(
+                            color: kCaptionColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18),
+                      )),
+                ]),
+                SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Text(
+                "DOWNLOAD CV",
+                style: GoogleFonts.poppins(
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 16,
+                    height: 1.8),
+              ),
+            ),
           ),
           SizedBox(
-            height: 120,
+            height: 50,
           ),
           Container(
             child: LayoutBuilder(builder: (_context, constraints) {
@@ -95,43 +116,52 @@ class CvSection extends StatelessWidget {
                     maxCrossAxisExtent: ScreenConfig.isTablet(context) ||
                             ScreenConfig.isMobile(context)
                         ? constraints.maxWidth / 2
-                        : 400,
+                        : constraints.maxWidth / 3,
                     childAspectRatio: ScreenConfig.isDesktop(context)
                         ? 1
-                        : MediaQuery.of(context).size.aspectRatio * 1.5),
+                        : MediaQuery.of(context).size.aspectRatio * 1.25),
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              designProcess[index].imagePath,
-                              width: 40,
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              designProcess[index].title,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          designProcess[index].subtitle,
-                          style: TextStyle(
-                              color: kCaptionColor, height: 1.5, fontSize: 15),
-                        )
-                      ],
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    elevation: 5,
+                    color: Colors.white10,
+                    child: Padding(
+                      padding: EdgeInsets.all(constraints.maxWidth * 0.03),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                designProcess[index].iconpath,
+                                color: Theme.of(context).accentColor,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                designProcess[index].title,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            designProcess[index].subtitle,
+                            style: TextStyle(
+                                color: kCaptionColor,
+                                height: 1.5,
+                                fontSize: 15),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },

@@ -59,7 +59,8 @@ class Footer extends StatelessWidget {
                                         children: [
                                           Icon(
                                             footerItem.iconPath,
-                                            color: kDangerColor,
+                                            color:
+                                                Theme.of(context).accentColor,
                                             size: 25,
                                           ),
                                           SizedBox(

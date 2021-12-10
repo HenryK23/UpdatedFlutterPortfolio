@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Models/model_extras.dart';
+import 'package:portfolio_website/Provider/provider_themes.dart';
 import 'package:portfolio_website/utils/constants.dart';
 import 'package:portfolio_website/utils/screen_config.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 final List<ExtrasList> extrasList = [
@@ -16,19 +18,27 @@ final List<ExtrasList> extrasList = [
           "In my spare time I love reading and learning about philosophy. Some of my favourites include Henri Bergson and Edmund Burke")
 ];
 
+List<String> images = [
+  "images/henryYellow2.png",
+  "images/henryRed2.png",
+  "images/henryPurple2.png",
+];
+
 class Extras extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int index = Provider.of<CustomThemes>(context).index!;
     return Container(
       child: ScreenConfig(
-        desktop: _buildUi(1000),
-        tablet: _buildUi(720),
-        mobile: _buildUi(MediaQuery.of(context).size.width),
+        desktop: _buildUi(1000, context, images[index]),
+        tablet: _buildUi(720, context, images[index]),
+        mobile:
+            _buildUi(MediaQuery.of(context).size.width, context, images[index]),
       ),
     );
   }
 
-  Widget _buildUi(width) {
+  Widget _buildUi(width, context, image) {
     return Container(
       alignment: Alignment.center,
       child: ResponsiveWrapper(
@@ -50,7 +60,7 @@ class Extras extends StatelessWidget {
                     "For when i'm not on my computer",
                     textAlign: TextAlign.end,
                     style: TextStyle(
-                        color: kCaptionColor,
+                        color: Theme.of(context).secondaryHeaderColor,
                         fontWeight: FontWeight.w500,
                         fontSize: 18),
                   )),
@@ -69,7 +79,7 @@ class Extras extends StatelessWidget {
                     Container(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Image.asset(
-                          "images/EditedHenrypfp.png",
+                          image,
                           fit: BoxFit.contain,
                           scale: 7,
                         )),
@@ -98,7 +108,8 @@ class Extras extends StatelessWidget {
                                       extras.description,
                                       textAlign: TextAlign.end,
                                       style: TextStyle(
-                                        color: kCaptionColor,
+                                        color: Theme.of(context)
+                                            .secondaryHeaderColor,
                                         height: 1.5,
                                       ),
                                     )
