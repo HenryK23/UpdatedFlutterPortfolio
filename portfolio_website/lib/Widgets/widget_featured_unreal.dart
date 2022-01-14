@@ -7,20 +7,18 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 List<ProjectItems> projectItems = [
   ProjectItems(
-      title: "WORKFLO\nSOLUTIONS APP",
-      imagePath: "images/workflo_app.png",
+      title: "Dating APP",
+      imagePath: "images/DatingApp.png",
       subtitle:
-          "This is an app I made for a company during a summer internship. Front end was developed on flutter and the back-end was developed using firebase and postman"),
+          "I enjoy taking online courses in my spare time\nthis was one of my projects I made during one"),
   ProjectItems(
-      title: "SHOPPING\nAPP",
-      imagePath: "images/ShopApp.png",
-      subtitle:
-          "This is a store app I had made as a personal project, you can add items to a cart and checkout. The front end was done on flutter and the back end is fully functional on firebase"),
+      title: "Dating APP",
+      imagePath: "images/dotnetlogo.png",
+      subtitle: "The Backend was made using SQLite and the .Net framework.\n "),
   ProjectItems(
-      title: "MENU\nAPP",
-      imagePath: "images/MenuApp.png",
-      subtitle:
-          "This is another personal project I have done. It compiles all of your favourite recipes and sorts them. Front end was done on flutter and back end is fully functional on firebase")
+      title: "Dating APP",
+      imagePath: "images/angularlogo.png",
+      subtitle: "The front end was made using angular and ngx-bootstrap\n"),
 ];
 
 class FeaturedUnrealProjects extends StatefulWidget {
@@ -65,7 +63,7 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Featured Unreal Projects",
+                            "Featured Web App Project",
                             style: GoogleFonts.poppins(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
@@ -116,7 +114,7 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                                     child: Center(
                                         widthFactor: 1.5,
                                         child: Text(
-                                          "NEXT PROJECT",
+                                          "LEARN MORE",
                                           style: TextStyle(
                                               color: kBackgroundColor2,
                                               fontSize: 13,
@@ -132,11 +130,10 @@ class _FeaturedUnrealProjects extends State<FeaturedUnrealProjects> {
                   Expanded(
                       flex: constraints.maxWidth > 720 ? 1 : 0,
                       child: Container(
-                        width: constraints.maxWidth * 0.3,
-                        height: MediaQuery.of(context).size.height * 0.5,
+                        width: constraints.maxWidth * 0.5,
+                        height: MediaQuery.of(context).size.height * 0.3,
                         child: Image.asset(
                           projectItems[index!].imagePath,
-                          fit: BoxFit.contain,
                         ),
                       )),
                 ],

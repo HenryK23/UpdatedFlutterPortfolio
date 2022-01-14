@@ -1,7 +1,10 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Models/model_design_process.dart';
 import 'package:portfolio_website/utils/constants.dart';
+import 'package:portfolio_website/utils/globals.dart';
 import 'package:portfolio_website/utils/screen_config.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -13,7 +16,11 @@ final List<DesignProcess> designProcess = [
   DesignProcess(
       title: "WEB DEV",
       iconpath: Icons.web,
-      subtitle: "- HTML\n- CSS\n- Javascript\n- Flask\n- jinja2"),
+      subtitle: "- Angular\n- HTML\n- CSS\n- Javascript\n- Flask\n- jinja2"),
+  DesignProcess(
+      title: ".Net",
+      iconpath: Icons.window_sharp,
+      subtitle: "- Core\n- API creation\n- Postman"),
   DesignProcess(
       title: "UX",
       iconpath: Icons.web_stories,
@@ -25,11 +32,7 @@ final List<DesignProcess> designProcess = [
   DesignProcess(
       title: "DATA",
       iconpath: Icons.storage,
-      subtitle: "- SQL\n- MongoDB\n- Databases\n- R"),
-  DesignProcess(
-      title: "OFFICE",
-      iconpath: Icons.window_outlined,
-      subtitle: "- Word\n- Excel\n- Powerpoint"),
+      subtitle: "- SQL\n- MongoDB\n- Databases\n- R\n- Weka"),
 ];
 
 class CvSection extends StatelessWidget {
@@ -39,9 +42,15 @@ class CvSection extends StatelessWidget {
       width: double.infinity,
       child: ScreenConfig(
           desktop: _buildUi(context, 1000),
-          tablet: _buildUi(context, 720),
+          tablet: _buildUi(context, 760),
           mobile: _buildUi(context, MediaQuery.of(context).size.width * 0.8)),
     );
+  }
+
+  downloadFile(url) {
+    AnchorElement anchorElement = new AnchorElement(href: url);
+    anchorElement.download = "Henry's CV";
+    anchorElement.click();
   }
 
   Widget _buildUi(BuildContext context, double width) {
@@ -59,6 +68,7 @@ class CvSection extends StatelessWidget {
                 Container(
                   child: Text(
                     "SKILLS",
+                    key: Globals.keySkills,
                     style: GoogleFonts.poppins(
                         fontSize: 30,
                         color: Colors.white,
@@ -90,13 +100,17 @@ class CvSection extends StatelessWidget {
             onTap: () {},
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
-              child: Text(
-                "DOWNLOAD CV",
-                style: GoogleFonts.poppins(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 16,
-                    height: 1.8),
+              child: GestureDetector(
+                child: Text(
+                  "DOWNLOAD CV",
+                  style: GoogleFonts.poppins(
+                      color: Theme.of(context).accentColor,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16,
+                      height: 1.8),
+                ),
+                onTap: () =>
+                    downloadFile("assets/files/HenryKeene-CV-2021-QR-New.pdf"),
               ),
             ),
           ),
@@ -119,7 +133,7 @@ class CvSection extends StatelessWidget {
                         : constraints.maxWidth / 3,
                     childAspectRatio: ScreenConfig.isDesktop(context)
                         ? 1
-                        : MediaQuery.of(context).size.aspectRatio * 1.25),
+                        : MediaQuery.of(context).size.aspectRatio * 1),
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
                     shape: RoundedRectangleBorder(
@@ -151,7 +165,14 @@ class CvSection extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 10,
+                          ),
+                          Divider(
+                            color: Colors.white,
+                            thickness: 1,
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           Text(
                             designProcess[index].subtitle,

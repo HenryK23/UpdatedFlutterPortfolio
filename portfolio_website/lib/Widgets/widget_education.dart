@@ -7,13 +7,13 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 final List<Education> education = [
   Education(
-      description: "I really enjoyed my time here",
+      description: "On track for a first or minimum 2:1",
       degree: "Honours",
       courseTitle: "Computing and User Experience",
       period: "2019-2022",
       institution: "Edinburgh Napier University"),
   Education(
-      description: "I learnt a lot about teamwork and how to be an adult here",
+      description: "Graduated with a high B",
       degree: "HNC",
       courseTitle: "Games Development",
       period: "2018-2019",

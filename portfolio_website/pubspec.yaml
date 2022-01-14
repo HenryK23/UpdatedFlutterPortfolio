@@ -29,6 +29,13 @@ dependencies:
   fluttericon: ^2.0.0
   carousel_slider: ^4.0.0
   provider: ^6.0.1
+  flutter_native_splash: ^1.2.2
+  url_launcher: ^6.0.10
+
+flutter_native_splash:
+  color: "#fffff"
+
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -81,3 +88,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  

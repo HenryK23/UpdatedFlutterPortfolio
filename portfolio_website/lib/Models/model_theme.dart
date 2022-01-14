@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class CustomTheme with ChangeNotifier {
+class CustomTheme {
   Color? primaryColor;
   Color? backgroundColor;
   Color? dangerColor;

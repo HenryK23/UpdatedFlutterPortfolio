@@ -10,17 +10,17 @@ List<ProjectItems> projectItems = [
       title: "WORKFLO\nSOLUTIONS APP",
       imagePath: "images/workflo_app.png",
       subtitle:
-          "This is an app I made for a company during a summer internship. Front end was developed on flutter and the back-end was developed using firebase and postman"),
+          "Front-End: Flutter\nBack-End: Firebase/Postman\nMade for a company"),
   ProjectItems(
       title: "SHOPPING\nAPP",
       imagePath: "images/ShopApp.png",
       subtitle:
-          "This is a store app I had made as a personal project, you can add items to a cart and checkout. The front end was done on flutter and the back end is fully functional on firebase"),
+          "Front-End: Flutter\nBack-End: Firebase\nMade as a personal project"),
   ProjectItems(
       title: "MENU\nAPP",
       imagePath: "images/MenuApp.png",
       subtitle:
-          "This is another personal project I have done. It compiles all of your favourite recipes and sorts them. Front end was done on flutter and back end is fully functional on firebase")
+          "Front-End: Flutter\nBack-End: Firebase\nMade as a personal project")
 ];
 
 class FeaturedProjects extends StatefulWidget {

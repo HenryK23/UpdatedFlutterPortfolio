@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Models/model_extras.dart';
 import 'package:portfolio_website/Provider/provider_themes.dart';
-import 'package:portfolio_website/utils/constants.dart';
+
 import 'package:portfolio_website/utils/screen_config.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 final List<ExtrasList> extrasList = [
   ExtrasList(
-      title: "Whisky Collector",
+      title: "Collecting",
+      subtitle: "Whisky",
       description:
-          "I have been collecting whisky for a few years now. My favourite would have to be Cragganmore or Dalwhinnie"),
+          "My Favourites are: \n  - Dalwhinnie \n  - Cragganmore \n  - Ardbeg "),
   ExtrasList(
-      title: "Philosophy",
+      title: "Reading",
+      subtitle: "Books",
       description:
-          "In my spare time I love reading and learning about philosophy. Some of my favourites include Henri Bergson and Edmund Burke")
+          "My Favourite books are: \n  - The Road to Wigan Pier \n  - A knight of the seven kingdoms \n  - 7 deaths of Evelyn Hardcastle")
 ];
 
 List<String> images = [
@@ -80,8 +82,9 @@ class Extras extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Image.asset(
                           image,
-                          fit: BoxFit.contain,
-                          scale: 7,
+                          fit: BoxFit.scaleDown,
+                          height: 200,
+                          width: 200,
                         )),
                     Wrap(
                       spacing: 50,
@@ -98,6 +101,15 @@ class Extras extends StatelessWidget {
                                         fontSize: 20,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      extras.subtitle,
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context).accentColor,
                                       ),
                                       textAlign: TextAlign.end,
                                     ),

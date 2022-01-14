@@ -19,8 +19,8 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ScreenConfig(
-        desktop: _buildUi(1000, context),
-        tablet: _buildUi(760, context),
+        desktop: _buildUi(MediaQuery.of(context).size.width, context),
+        tablet: _buildUi(MediaQuery.of(context).size.width, context),
         mobile: _buildUi(MediaQuery.of(context).size.width * 0.8, context),
       ),
     );
@@ -46,16 +46,16 @@ class Footer extends StatelessWidget {
                               (footerItem) => Container(
                                 height: 120,
                                 width: ScreenConfig.isMobile(context)
-                                    ? constraints.maxWidth / 2 - 20
+                                    ? constraints.maxWidth / 2 - 10
                                     : constraints.maxWidth / 4 - 20,
                                 child: Container(
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                            MainAxisAlignment.center,
                                         children: [
                                           Icon(
                                             footerItem.iconPath,

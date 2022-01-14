@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'provider_theme.dart';
+import 'package:portfolio_website/Models/model_theme.dart';
 
 class CustomThemes with ChangeNotifier {
   List<CustomTheme> _themes = [

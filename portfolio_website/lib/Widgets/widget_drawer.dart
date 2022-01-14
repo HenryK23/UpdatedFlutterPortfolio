@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/Widgets/widget_contact_page.dart';
 import 'package:portfolio_website/Widgets/widget_header.dart';
 import 'package:portfolio_website/utils/constants.dart';
+
+List<int> offsets = [800, 2300, 3750];
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -22,7 +25,13 @@ class CustomDrawer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: TextButton(
-                          onPressed: headerItems[index].onTap,
+                          onPressed: () => {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ContactPage();
+                                })
+                          },
                           child: Center(
                             widthFactor: 0.5,
                             child: Text(
@@ -41,7 +50,10 @@ class CustomDrawer extends StatelessWidget {
                           headerItems[index].title,
                           style: TextStyle(color: Colors.white),
                         ),
-                      );
+                        onTap: () => {
+                              headerItems[index].onTap(offsets[index]),
+                              Navigator.pop(context),
+                            });
               },
               //Controls how close drawer items are to one another
               separatorBuilder: (BuildContext context, int index) {
