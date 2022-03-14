@@ -1,12 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_website/Provider/provider_projects.dart';
 import 'package:portfolio_website/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'Provider/provider_themes.dart';
 import 'Screens/screen_homepage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+        apiKey: "AIzaSyAlmFzqT490ROXYgZymt1ITQ-ZL0qjc4kw",
+        appId: "1:503802100388:web:bb90967458e3191919c431",
+        messagingSenderId: "503802100388",
+        projectId: "portfolio-data-87ec4",
+        storageBucket: "portfolio-data-87ec4.appspot.com",
+        authDomain: "portfolio-data-87ec4.firebaseapp.com"),
+  );
   runApp(PortfolioWebsite());
 }
 
@@ -16,10 +28,15 @@ class PortfolioWebsite extends StatefulWidget {
 }
 
 class _PortfolioWebsiteState extends State<PortfolioWebsite> {
+  final Future<FirebaseApp> _initialise = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: CustomThemes())],
+      providers: [
+        ChangeNotifierProvider.value(value: CustomThemes()),
+        ChangeNotifierProvider.value(value: Projects())
+      ],
       child: Consumer<CustomThemes>(
         builder: (ctx, _theme, _) => MaterialApp(
           title: 'Portfolio',
@@ -50,7 +67,18 @@ class _PortfolioWebsiteState extends State<PortfolioWebsite> {
               background: Container(
                 color: kBackgroundColor,
               )),
-          home: PortfolioHomePage(),
+          home: FutureBuilder(
+            future: _initialise,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                print(snapshot.error);
+              }
+              if (snapshot.connectionState == ConnectionState.done) {
+                return PortfolioHomePage();
+              }
+              return CircularProgressIndicator();
+            },
+          ),
         ),
       ),
     );

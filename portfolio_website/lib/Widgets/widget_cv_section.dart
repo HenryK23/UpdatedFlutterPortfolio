@@ -96,27 +96,6 @@ class CvSection extends StatelessWidget {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                child: Text(
-                  "DOWNLOAD CV",
-                  style: GoogleFonts.poppins(
-                      color: Theme.of(context).accentColor,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16,
-                      height: 1.8),
-                ),
-                onTap: () =>
-                    downloadFile("assets/files/HenryKeene-CV-2021-QR-New.pdf"),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
           Container(
             child: LayoutBuilder(builder: (_context, constraints) {
               return ResponsiveGridView.builder(

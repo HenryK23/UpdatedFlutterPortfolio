@@ -3,17 +3,25 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ContactPage extends StatelessWidget {
+import '../Provider/provider_projects.dart';
+
+class ContactPage extends StatefulWidget {
   const ContactPage({
     Key? key,
   }) : super(key: key);
 
-  downloadFile(url) {
-    AnchorElement anchorElement = new AnchorElement(href: url);
-    anchorElement.download = "Henry's CV";
-    anchorElement.click();
+  @override
+  State<ContactPage> createState() => _ContactPageState();
+}
+
+class _ContactPageState extends State<ContactPage> {
+  @override
+  initState() {
+    super.initState();
+    Provider.of<Projects>(context, listen: false).fetchAndSetCV();
   }
 
   @override
@@ -301,12 +309,14 @@ class ContactPage extends StatelessWidget {
                                 style:
                                     TextButton.styleFrom(onSurface: Colors.red),
                                 child: Text(
-                                  "Download",
+                                  "View",
                                   style: TextStyle(color: Colors.white),
                                   textAlign: TextAlign.center,
                                 ),
-                                onPressed: () => downloadFile(
-                                    "assets/files/HenryKeene-CV-2021-QR-New.pdf"),
+                                onPressed: () => _launchInBrowser(
+                                    Provider.of<Projects>(context,
+                                            listen: false)
+                                        .CV[0]["imagePath"]),
                               ),
                             ),
                           ),

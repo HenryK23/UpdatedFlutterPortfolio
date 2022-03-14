@@ -31,6 +31,8 @@ dependencies:
   provider: ^6.0.1
   flutter_native_splash: ^1.2.2
   url_launcher: ^6.0.10
+  firebase_core: ^1.13.1
+  cloud_firestore: ^3.1.10
 
 flutter_native_splash:
   color: "#fffff"
@@ -60,6 +62,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/files/HenryKeene-CV-2021-QR-New.pdf
     
   #   - images/a_dot_ham.jpeg
 
